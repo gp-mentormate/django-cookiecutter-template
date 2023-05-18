@@ -4,8 +4,8 @@ services:
   backend:
     image: djangoapi
     build:
-      context: ../
-      dockerfile: deployments/dev/Dockerfile
+      context: ../..
+      dockerfile: dev/Dockerfile
     container_name: djangoapi
     env_file:
       - ../.env

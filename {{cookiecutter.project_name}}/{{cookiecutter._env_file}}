@@ -1,7 +1,12 @@
-ENV=dev
+# Environment settings
+ENV=local
 DEBUG=1
-SECRET_KEY=foo
+
+# Application settings
+SECRET_KEY={{ random_ascii_string(50, punctuation=True) }}
 DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 0.0.0.0 [::1]
+
+# Database settings
 DB_ENGINE=django.db.backends.postgresql
 DB_NAME=db
 DB_USER=django

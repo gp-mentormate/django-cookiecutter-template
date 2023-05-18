@@ -1,0 +1,6 @@
+-r base.txt
+
+# main packages
+psycopg2-binary==2.9.6
+
+# dependancies

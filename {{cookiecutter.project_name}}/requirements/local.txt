@@ -1,0 +1,10 @@
+-r base.txt
+
+# main packages
+psycopg2==2.9.6
+
+# development tools
+ipdb==0.13.13
+black==23.3.0
+
+# dependancies

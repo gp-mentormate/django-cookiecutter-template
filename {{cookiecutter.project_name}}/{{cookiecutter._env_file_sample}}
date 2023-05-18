@@ -1,0 +1,15 @@
+# Environment settings
+ENV=
+DEBUG=0
+
+# Application settings
+SECRET_KEY=
+DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 0.0.0.0 [::1]
+
+# Database settings
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=
+DB_USER=
+DB_PASSWORD=
+DB_HOST=
+DB_PORT=5432
