@@ -3,7 +3,7 @@ ENV=local
 DEBUG=1
 
 # Application settings
-SECRET_KEY="{{ random_ascii_string(50, punctuation=True)| replace('"', '^') }}"
+SECRET_KEY="{{ random_ascii_string(50, punctuation=True)| replace('"', '^')| replace('$', '@') }}"
 DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 0.0.0.0 [::1]
 
 # Database settings
