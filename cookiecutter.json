@@ -1,5 +1,4 @@
 {
   "project_name": "my_project",
-  "_env_file": ".env",
-  "_env_file_sample": ".env.sample"
+  "_env_file": ".env"
 }

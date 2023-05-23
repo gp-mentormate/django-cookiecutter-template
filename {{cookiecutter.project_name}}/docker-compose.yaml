@@ -2,28 +2,30 @@ version: "3.9"
 
 services:
   backend:
-    image: djangoapi
+    image: {{ cookiecutter.project_name }}
     build:
-      context: ../..
-      dockerfile: dev/Dockerfile
-    container_name: djangoapi
+      dockerfile: docker/local/Dockerfile
+    container_name: {{ cookiecutter.project_name }}_backend
     env_file:
-      - ../.env
+      - .env
     ports:
       - "8000:8000"
     volumes:
-      - ../:/var/www/app
+      - ./:/app
     depends_on:
       - database
+      - mailhog
     networks:
       - backend-net
     stdin_open: true
     tty: true
 
   database:
-    image: postgres:15-alpine
-    container_name: postgresdb
+    image: postgres:14-alpine
+    container_name: {{ cookiecutter.project_name }}_database
     restart: unless-stopped
+    ports:
+      - "5432:5432"
     environment:
       - POSTGRES_DB=db
       - POSTGRES_USER=django
@@ -33,8 +35,19 @@ services:
     networks:
       - backend-net
 
+  cache:
+    image: redis:7.0-alpine
+    container_name: {{ cookiecutter.project_name }}_cache
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning --requirepass password
+    volumes:
+      - cache:/data
+
   mailhog:
     image: mailhog/mailhog
+    container_name: {{ cookiecutter.project_name }}_mailhog
     logging:
       driver: 'none'
     ports:

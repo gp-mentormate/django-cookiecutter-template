@@ -4,10 +4,14 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-env = environ.Env()
+env = environ.Env(
+    DEBUG=(bool, False),
+    SECRET_KEY=(str, 'foo'),
+
+)
 env.read_env(os.path.join(BASE_DIR, '.env'))
 
-if env('ENV') == 'prod':
+if env('ENV') == 'production':
     from config.settings.production import *
 else:
     from config.settings.local import *
@@ -58,7 +62,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+ASGI_APPLICATION = 'config.asgi.application'
 
 AUTH_PASSWORD_VALIDATORS = [
     {

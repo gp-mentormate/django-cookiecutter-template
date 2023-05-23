@@ -51,8 +51,8 @@ root
 │   ├── urls.py
 │   └── wsgi.py
 ├── db
-├── deployments
-│   ├── dev
+├── docker
+│   ├── local
 │   │   └── Dockerfile
 │   ├── docker-compose.yaml
 │   └── prod
