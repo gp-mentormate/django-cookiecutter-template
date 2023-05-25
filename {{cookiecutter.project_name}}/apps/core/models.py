@@ -9,7 +9,7 @@ user_model = settings.AUTH_USER_MODEL
 
 
 class CustomSoftDeleteModel(SoftDeleteModel):
-    deleted_by = models.ForeignKey(
+    deleted_by: models.ForeignKey = models.ForeignKey(
         to=user_model,
         verbose_name=_('Deleted by'),
         null=True,
@@ -19,15 +19,15 @@ class CustomSoftDeleteModel(SoftDeleteModel):
     )
 
 
-class BaseModel(models.Model, CustomSoftDeleteModel):
-    uid = models.UUIDField(
+class BaseModel(CustomSoftDeleteModel):
+    uid: models.UUIDField = models.UUIDField(
         verbose_name=_('UUID'),
         unique=True,
         default=uuid.uuid4,
         editable=False
     )
 
-    created_by = models.ForeignKey(
+    created_by: models.ForeignKey = models.ForeignKey(
         to=user_model,
         verbose_name=_('Created by'),
         null=True,
@@ -36,14 +36,14 @@ class BaseModel(models.Model, CustomSoftDeleteModel):
         on_delete=models.SET_NULL
     )
 
-    created_at = models.DateTimeField(
+    created_at: models.DateTimeField = models.DateTimeField(
         verbose_name=_('Created at'),
         auto_now_add=True,
         editable=False,
         db_index=True
     )
 
-    updated_by = models.ForeignKey(
+    updated_by: models.ForeignKey = models.ForeignKey(
         to=user_model,
         verbose_name=_('Updated by'),
         null=True,
@@ -52,7 +52,7 @@ class BaseModel(models.Model, CustomSoftDeleteModel):
         on_delete=models.SET_NULL
     )
 
-    updated_at = models.DateTimeField(
+    updated_at: models.DateTimeField = models.DateTimeField(
         verbose_name=_('Updated at'),
         auto_now=True,
         null=True,
