@@ -1,4 +1,6 @@
 # main packages
+setuptools==67.8.0
+
 Django==4.2.1
 django-cors-headers==4.0.0
 django-environ==0.10.0

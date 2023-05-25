@@ -3,11 +3,23 @@ import uuid
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django_softdelete.models import SoftDeleteModel
 
 user_model = settings.AUTH_USER_MODEL
 
 
-class BaseModel(models.Model):
+class CustomSoftDeleteModel(SoftDeleteModel):
+    deleted_by = models.ForeignKey(
+        to=user_model,
+        verbose_name=_('Deleted by'),
+        null=True,
+        blank=True,
+        related_name='%(class)s_deleted',
+        on_delete=models.SET_NULL
+    )
+
+
+class BaseModel(models.Model, CustomSoftDeleteModel):
     uid = models.UUIDField(
         verbose_name=_('UUID'),
         unique=True,
