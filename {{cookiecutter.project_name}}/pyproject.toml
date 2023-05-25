@@ -1,5 +1,54 @@
-[tool.black]
-line-length = 79
-target-version = ['py39']
-include = '\.pyi?$'
-extend-exclude = 'migrations/*'
+[project]
+name = "{{ cookiecutter.project_name }}"
+version = "0.0.1"
+description = ""
+readme = "README.md"
+authors = [
+    { name = "", email = "" },
+]
+maintainers = [
+    { name = "", email = "" },
+]
+classifiers = [
+    "Framework :: Django :: 4.2",
+    "Programming Language :: Python :: 3.11",
+]
+
+license = { text = "" }
+requires-python = ">=3.11"
+
+[tool.ruff]
+select = [
+  "E",   # pycodestyle
+  "F",   # pyflakes
+  "UP",  # pyupgrade,
+  "I",   # isort
+]
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".env",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "env",
+    "venv",
+    "**/migrations/*.py"
+]
