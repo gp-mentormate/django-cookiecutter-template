@@ -1,3 +1,7 @@
+# The `urls.py` file in Django is responsible for mapping URL patterns to
+# corresponding views or endpoints within a Django project, allowing for
+# proper routing and handling of incoming requests.
+
 from django.urls import re_path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view

@@ -1,3 +1,7 @@
+# The `models.py` file defines the structure and behavior of
+# the application's database models, allowing developers to create and
+# manipulate database tables and their relationships.
+
 import uuid
 
 from django.conf import settings
