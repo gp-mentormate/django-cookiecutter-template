@@ -3,16 +3,12 @@ import platform
 import shutil
 import subprocess
 
-import cookiecutter
-
 
 def remove(filepath):
-    print(filepath, os.path.isfile(filepath), os.path.isdir(filepath))
     if os.path.isfile(filepath):
         os.remove(filepath)
     elif os.path.isdir(filepath):
-        res = shutil.rmtree(filepath)
-        print(res)
+        shutil.rmtree(filepath)
 
 
 def create_virtual_environment():

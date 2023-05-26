@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'apps.core',
-    'apps.example_api',
+    {% if cookiecutter.add_example_api == 'True' %}'apps.example_api',{% endif %}
 ]
 
 MIDDLEWARE = [
