@@ -47,6 +47,13 @@ The project supports and containerization:
 
 And navigate to `http://127.0.0.1:8000/`.
 
+## Documentation
+
+Swagger documentation is available:
+`http://127.0.0.1:8000/api/swagger`
+`http://127.0.0.1:8000/api/redoc`
+
+
 ## Django Skeleton Project
 
 ```bash
