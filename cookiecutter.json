@@ -1,5 +1,7 @@
 {
   "project_name": "my_project",
-  "add_example_api": [true, false],
+  "add_example_api": [false, true],
+  "email": "webmaster@localhost",
+  "name": "John Doe",
   "_env_file": ".env"
 }

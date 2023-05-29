@@ -2,7 +2,6 @@ import environ
 import os
 from pathlib import Path
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 env = environ.Env()
@@ -18,3 +17,5 @@ DATABASES = {
         'PORT': env('DB_PORT'),
     }
 }
+
+ADMINS = [("{{ cookiecutter.name }}", "{{ cookiecutter.email }}")]
