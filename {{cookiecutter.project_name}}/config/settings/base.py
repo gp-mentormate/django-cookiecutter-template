@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
     'rest_framework',
     'apps.core',
     {% if cookiecutter.add_example_api == 'True' %}'apps.example_api',{% endif %}
