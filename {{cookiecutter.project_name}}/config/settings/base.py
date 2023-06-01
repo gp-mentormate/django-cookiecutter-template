@@ -23,15 +23,18 @@ DEBUG = int(env('DEBUG', default=0))
 ALLOWED_HOSTS = env('DJANGO_ALLOWED_HOSTS').split(' ')
 
 INSTALLED_APPS = [
+    # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Third-party apps
     'rest_framework',
     'drf_spectacular_sidecar',
     'drf_spectacular',
+    # Custom apps
     'apps.core',
     {% if cookiecutter.add_example_api == 'True' %}'apps.example_api', {% endif %}
 ]
