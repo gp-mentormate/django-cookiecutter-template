@@ -11,7 +11,9 @@ django-soft-delete==0.9.21
 django-filter==23.2
 django-redis==5.2.0
 djangorestframework==3.14.0
-drf-yasg==1.21.5
+drf-spectacular==0.26.2
+drf-spectacular==0.26.2
+drf-spectacular-sidecar==2023.6.1
 
 # dependencies
 asgiref==3.7.2

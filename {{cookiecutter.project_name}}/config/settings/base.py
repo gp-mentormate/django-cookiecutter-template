@@ -29,10 +29,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'drf_yasg',
     'rest_framework',
+    'drf_spectacular_sidecar',
+    'drf_spectacular',
     'apps.core',
-    {% if cookiecutter.add_example_api == 'True' %}'apps.example_api',{% endif %}
+    {% if cookiecutter.add_example_api == 'True' %}'apps.example_api', {% endif %}
 ]
 
 MIDDLEWARE = [
@@ -95,7 +96,6 @@ AUTH_PASSWORD_VALIDATORS = [
     }
 ]
 
-
 LANGUAGE_CODE = 'en-us'
 LANGUAGES = (
     ('en-us', 'English'),
@@ -114,5 +114,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': '{{cookiecutter.project_name}} API',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '0.1.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_DIST': 'SIDECAR',
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
 }
