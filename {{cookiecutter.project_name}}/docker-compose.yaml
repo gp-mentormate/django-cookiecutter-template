@@ -4,6 +4,7 @@ services:
   backend:
     image: {{ cookiecutter.project_name }}
     build:
+      context: .
       dockerfile: docker/local/Dockerfile
     container_name: {{ cookiecutter.project_name }}_backend
     env_file:
