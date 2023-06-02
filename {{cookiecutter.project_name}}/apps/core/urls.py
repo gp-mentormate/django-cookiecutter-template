@@ -1,23 +1,28 @@
-# The `urls.py` file in Django is responsible for mapping URL patterns to
-# corresponding views or endpoints within a Django project, allowing for
-# proper routing and handling of incoming requests.
-from django.urls import path
+from django.contrib import admin
+from django.urls import (
+    include,
+    path,
+)
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
     SpectacularSwaggerView
 )
-from rest_framework import routers, permissions
+from rest_framework import routers
 
 from apps.core.views import UserViewSet
 
-
-app_name = 'core'
-
 urlpatterns = [
+    # Django urls
+    path('admin/', admin.site.urls),
+    path('drf-auth/', include('rest_framework.urls')),
+
+    # REST API urls
+
+    # Documentation urls
     path('docs/', SpectacularAPIView.as_view(), name='schema'),
-    path('docs/swagger-ui/', SpectacularSwaggerView.as_view(url_name='api:schema'), name='swagger-ui'),
-    path('docs/redoc/', SpectacularRedocView.as_view(url_name='api:schema'), name='redoc'),
+    path('docs/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('docs/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
 
 router = routers.DefaultRouter()
