@@ -36,7 +36,10 @@ INSTALLED_APPS = [
     'drf_spectacular',
     # Custom apps
     'apps.core',
-    {% if cookiecutter.add_example_api == 'True' %}'apps.example_api', {% endif %}
+    {%- if cookiecutter.add_example_api == 'True' %}
+    'apps.auth',
+    'apps.example_api',
+    {% endif -%}
 ]
 
 MIDDLEWARE = [

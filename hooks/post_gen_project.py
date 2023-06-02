@@ -34,12 +34,13 @@ def install_requirements():
                         requirements_file])
 
 
-def add_example_api():
+def remove_example_api():
     if "{{ cookiecutter.add_example_api }}" == "False":
         remove(os.path.join(os.getcwd(), 'apps', 'example_api'))
+        remove(os.path.join(os.getcwd(), 'apps', 'auth'))
 
 
 # Call the initial setup functions
 create_virtual_environment()
 install_requirements()
-add_example_api()
+remove_example_api()

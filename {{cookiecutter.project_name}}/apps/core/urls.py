@@ -12,12 +12,24 @@ from rest_framework import routers
 
 from apps.core.views import UserViewSet
 
+{%- if cookiecutter.add_example_api == 'True' %}
+
+urlpatterns_api_v1 = [
+    path('auth/', include('apps.auth.api.v1.urls'))
+]
+
+{%- endif %}
+
 urlpatterns = [
     # Django urls
     path('admin/', admin.site.urls),
     path('drf-auth/', include('rest_framework.urls')),
 
     # REST API urls
+    {%- if cookiecutter.add_example_api == 'True' %}
+    path('api/v1/', include(urlpatterns_api_v1)),
+
+    {% endif -%}
 
     # Documentation urls
     path('docs/', SpectacularAPIView.as_view(), name='schema'),
