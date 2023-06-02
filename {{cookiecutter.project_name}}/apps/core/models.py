@@ -22,6 +22,9 @@ class CustomSoftDeleteModel(SoftDeleteModel):
         on_delete=models.SET_NULL
     )
 
+    class Meta:
+        abstract = True
+
 
 class BaseModel(CustomSoftDeleteModel):
     uid: models.UUIDField = models.UUIDField(
