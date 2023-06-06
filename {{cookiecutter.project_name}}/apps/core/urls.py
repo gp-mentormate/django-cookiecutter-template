@@ -17,7 +17,8 @@ from rest_framework import routers
 {%- if cookiecutter.add_example_api == 'True' %}
 
 urlpatterns_api_v1 = [
-    path('auth/', include('apps.auth.api.v1.urls'))
+    path('auth/', include('apps.auth.api.v1.urls')),
+    path('todo/', include('apps.todo.api.v1.urls'))
 ]
 
 {%- endif %}

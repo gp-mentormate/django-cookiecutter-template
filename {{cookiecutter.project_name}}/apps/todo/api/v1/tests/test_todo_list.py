@@ -3,7 +3,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIClient, APITestCase
 
-from apps.core.factories import UserFactory
+from apps.users.factories import CustomUserFactory
 from apps.todo.factories import TodoListFactory
 
 
@@ -11,7 +11,7 @@ from apps.todo.factories import TodoListFactory
 class TodoListListTest(APITestCase):
     def setUp(self):
         self.client = APIClient()
-        self.user = UserFactory()
+        self.user = CustomUserFactory()
         self.todo_list = TodoListFactory(created_by=self.user)
 
     def test_get_todo_lists(self):
@@ -35,7 +35,7 @@ class TodoListListTest(APITestCase):
 
     def test_get_todo_lists_unauthorized(self):
         # Arrange
-        not_owner = UserFactory()
+        not_owner = CustomUserFactory()
         self.client.force_authenticate(user=not_owner)
 
         # Act
