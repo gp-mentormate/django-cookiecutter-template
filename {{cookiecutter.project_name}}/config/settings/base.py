@@ -134,3 +134,6 @@ SPECTACULAR_SETTINGS = {
     'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
     'REDOC_DIST': 'SIDECAR',
 }
+{% if cookiecutter.add_example_api == 'True' %}
+AUTH_USER_MODEL = 'users.CustomUser'
+{% endif %}
