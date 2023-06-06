@@ -4,3 +4,5 @@
 # error codes, or API endpoints, in one location. By using a constants.py file,
 # code organization, readability, and reusability are improved, as it provides
 # a single source of truth for these fixed values.
+
+# Create yours constants here

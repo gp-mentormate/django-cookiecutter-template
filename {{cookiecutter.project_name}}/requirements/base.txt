@@ -10,6 +10,7 @@ django-environ==0.10.0
 django-soft-delete==0.9.21
 django-filter==23.2
 django-redis==5.2.0
+django-email-from-template==2.4.1
 djangorestframework==3.14.0
 
 drf-spectacular==0.26.2

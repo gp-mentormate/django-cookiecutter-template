@@ -18,4 +18,5 @@ DATABASES = {
     }
 }
 
+DEFAULT_FROM_EMAIL = "webmaster@localhost"
 ADMINS = [("{{ cookiecutter.name }}", "{{ cookiecutter.email }}")]

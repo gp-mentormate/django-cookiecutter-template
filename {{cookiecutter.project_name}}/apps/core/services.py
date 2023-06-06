@@ -4,8 +4,4 @@
 # other parts of the system, and perform various tasks related to the specific
 # domain language of the software.
 
-from django.contrib.auth.models import User
-
-
-def get_all_users():
-    return User.objects.all()
+# Create your services here.

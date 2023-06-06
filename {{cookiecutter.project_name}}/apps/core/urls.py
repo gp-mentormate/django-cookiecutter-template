@@ -1,3 +1,7 @@
+# The `urls.py` file in Django contains the routing configuration for the app,
+# mapping URLs to views and defining the URL patterns.
+# Palace all main url configurations related with the project here.
+
 from django.contrib import admin
 from django.urls import (
     include,

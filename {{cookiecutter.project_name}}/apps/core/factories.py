@@ -3,3 +3,5 @@
 # generating test data. It provides a convenient way to generate realistic
 # and customizable test objects, reducing the effort required for setting up
 # test data during unit tests or automated testing.
+
+# Create your factories here.
