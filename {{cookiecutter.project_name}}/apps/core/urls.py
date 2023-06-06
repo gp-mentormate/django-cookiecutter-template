@@ -14,8 +14,6 @@ from drf_spectacular.views import (
 )
 from rest_framework import routers
 
-from apps.core.views import UserViewSet
-
 {%- if cookiecutter.add_example_api == 'True' %}
 
 urlpatterns_api_v1 = [
@@ -42,6 +40,5 @@ urlpatterns = [
 ]
 
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet, 'users')
 
 urlpatterns += router.urls
