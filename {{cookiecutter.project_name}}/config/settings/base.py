@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'apps.core',
     {%- if cookiecutter.add_example_api == 'True' %}
     'apps.auth',
-    'apps.example_api',
+    'apps.users',
+    'apps.todo',
     {% endif -%}
 ]
 
