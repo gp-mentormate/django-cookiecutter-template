@@ -2,10 +2,7 @@
 # processing data, and rendering the appropriate response, serving as the
 # bridge between the user's interactions and the application's business logic.
 # Create your views here.
-import logging
-from typing import Any
-
-from rest_framework import permissions, status
+from rest_framework import permissions
 from rest_framework.viewsets import ModelViewSet
 
 from apps.todo.api.v1.serializers import TodoListSerializer
@@ -15,7 +12,8 @@ from apps.todo.models import TodoList
 
 class TodoListModelViewSet(ModelViewSet):
     """
-    This ViewSet provides CRUD (Create, Retrieve, Update, Delete) operations for TodoLists.
+    This ViewSet provides CRUD (Create, Retrieve, Update, Delete)
+    operations for TodoLists.
     """
 
     permission_classes = (permissions.IsAuthenticated,)

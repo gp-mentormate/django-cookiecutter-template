@@ -35,8 +35,9 @@ def install_requirements():
 
 
 def remove_example_api():
-    if "{{ cookiecutter.add_example_api }}" == "False":
-        remove(os.path.join(os.getcwd(), 'apps', 'example_api'))
+    if "{{ cookiecutter.add_example_apps }}" == "False":
+        remove(os.path.join(os.getcwd(), 'apps', 'todo'))
+        remove(os.path.join(os.getcwd(), 'apps', 'users'))
         remove(os.path.join(os.getcwd(), 'apps', 'auth'))
 
 

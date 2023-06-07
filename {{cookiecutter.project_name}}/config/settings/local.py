@@ -1,7 +1,7 @@
+from config.settings.base import *  # noqa
+
 import logging
 import sys
-
-from config.settings.base import *
 
 DEFAULT_FROM_EMAIL = "webmaster@localhost"
 

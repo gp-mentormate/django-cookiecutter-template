@@ -9,6 +9,6 @@ env = environ.Env()
 env.read_env(os.path.join(BASE_DIR, '.env'))
 
 if env("ENV") == 'production':
-    from config.settings.production import *
+    from config.settings.production import * # noqa
 else:
-    from config.settings.local import *
+    from config.settings.local import * # noqa

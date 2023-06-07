@@ -172,3 +172,4 @@ cython_debug/
 ../.idea/
 .idea/
 .vscode/
+.ruff_cache/

@@ -5,7 +5,7 @@ from django.utils import timezone
 from factory import RelatedFactoryList
 from factory.django import DjangoModelFactory
 
-from .models import TodoList, TodoItem
+from .models import TodoItem, TodoList
 
 
 class TodoListFactory(DjangoModelFactory):
@@ -17,7 +17,8 @@ class TodoListFactory(DjangoModelFactory):
     TodoList objects for testing or seeding the database.
 
     Example usage:
-        To create a TodoListFactory, call the factory and use the generated TodoList object:
+        To create a TodoListFactory, call the factory and use the generated
+        TodoList object:
 
         ```python
         todo_list = TodoListFactory()
@@ -48,7 +49,8 @@ class TodoItemFactory(factory.django.DjangoModelFactory):
     objects for testing or seeding the database.
 
     Example usage:
-        To create a TodoItemFactory, call the factory and use the generated TodoItem object:
+        To create a TodoItemFactory, call the factory and use the generated
+        TodoItem object:
 
         ```python
         todo_item = TodoItemFactory()
@@ -63,6 +65,7 @@ class TodoItemFactory(factory.django.DjangoModelFactory):
         model = TodoItem
 
     title = factory.Faker('sentence', nb_words=5, variable_nb_words=True)
-    description = factory.Faker('paragraph', nb_sentences=3, variable_nb_sentences=True)
+    description = factory.Faker('paragraph', nb_sentences=3,
+                                variable_nb_sentences=True)
     due_date = timezone.now() + timedelta(days=7)
     todo_list = factory.SubFactory(TodoListFactory)

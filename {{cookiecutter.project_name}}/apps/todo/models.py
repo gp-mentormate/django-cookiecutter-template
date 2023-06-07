@@ -1,7 +1,6 @@
-from django.utils import timezone
-
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 from apps.core.models import BaseModel
 

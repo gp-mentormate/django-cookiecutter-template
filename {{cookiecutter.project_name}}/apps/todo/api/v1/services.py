@@ -3,7 +3,6 @@
 # model instances, into JSON or other formats for API responses and vice versa.
 # Create your services here.
 import logging
-from typing import Union
 
 from django.contrib.auth.models import AbstractUser, AnonymousUser
 from django.core.exceptions import ValidationError
@@ -14,16 +13,14 @@ from email_from_template import send_mail
 from apps.todo.api.v1.selectors import all_todo_lists, user_todo_lists
 
 
-def get_todo_lists(*, user: Union[AbstractUser, AnonymousUser]) -> QuerySet:
+def get_todo_lists(*, user: AbstractUser | AnonymousUser) -> QuerySet:
     """
     Retrieves the todo lists based on the user.
 
     Args:
-        user (Union[AbstractUser, AnonymousUser]): The user for whom to
-                                                   retrieve the todo lists.
-                                                   It can be an instance of
-                                                   AbstractUser (authenticated user)
-                                                   or AnonymousUser (unauthenticated user).
+        user (AbstractUser | AnonymousUser): The user for whom to
+        retrieve the todo lists. It can be an instance of AbstractUser
+        (authenticated user) or AnonymousUser (unauthenticated user).
 
     Returns:
         QuerySet: A Django QuerySet containing the todo lists.

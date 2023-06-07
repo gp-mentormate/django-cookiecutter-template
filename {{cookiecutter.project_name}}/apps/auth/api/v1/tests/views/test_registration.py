@@ -1,14 +1,14 @@
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from faker import Faker
 from rest_framework import status
 from rest_framework.test import APITestCase
-from faker import Faker
 
 
 class UserRegistrationTest(APITestCase):
     def setUp(self):
         self.fake = Faker()
-        self.register_url = reverse("customuser-list")  # URL for user registration
+        self.register_url = reverse("customuser-list")
 
     def test_user_registration(self):
         # Arrange
@@ -29,7 +29,7 @@ class UserRegistrationTest(APITestCase):
 
         self.assertEqual(response.data["username"], user_data["username"])
         self.assertEqual(response.data["email"], user_data["email"])
-        self.assertTrue("password" not in response.data)  # Ensure password is not returned
+        self.assertTrue("password" not in response.data)
 
     def test_user_registration_existing_username(self):
         # Arrange
@@ -49,4 +49,5 @@ class UserRegistrationTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
         self.assertIn("username", response.data)
-        self.assertIn("A user with that username already exists.", response.data["username"])
+        self.assertIn("A user with that username already exists.",
+                      response.data["username"])

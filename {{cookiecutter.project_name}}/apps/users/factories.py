@@ -15,7 +15,8 @@ class CustomUserFactory(factory.django.DjangoModelFactory):
     @classmethod
     def _create(cls, model_class, *args, **kwargs):
         """
-        Override the default _create method to disable password hashing during tests.
+        Override the default _create method to disable password hashing
+        during tests.
         """
         manager = cls._get_manager(model_class)
         return manager.create_user(*args, **kwargs)

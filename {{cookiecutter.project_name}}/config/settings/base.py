@@ -1,6 +1,7 @@
-import environ
 import os
 from pathlib import Path
+
+import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -28,7 +29,7 @@ INSTALLED_APPS = [
     'email_from_template',
     # Custom apps
     'apps.core',
-    {%- if cookiecutter.add_example_api == 'True' %}
+    {%- if cookiecutter.add_example_apps == 'True' %}
     'apps.auth',
     'apps.users',
     'apps.todo',
@@ -65,26 +66,27 @@ TEMPLATES = [
 
 ASGI_APPLICATION = 'config.asgi.application'
 
-COMMON_PASSWORDS_FILE = os.path.join(BASE_DIR, 'config', 'common_passwords.txt.gz')
+COMMON_PASSWORDS_FILE = os.path.join(BASE_DIR, 'config',
+                                     'common_passwords.txt.gz')
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', # noqa: 501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', # noqa: 501
         'OPTIONS': {
             'min_length': 6,
         }
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', # noqa: 501
         'OPTIONS': {
             'password_list_path': COMMON_PASSWORDS_FILE,
         },
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', # noqa: 501
     },
     {
         'NAME': 'zxcvbn_password.ZXCVBNValidator',
@@ -137,6 +139,6 @@ SPECTACULAR_SETTINGS = {
     'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
     'REDOC_DIST': 'SIDECAR',
 }
-{% if cookiecutter.add_example_api == 'True' %}
+{% if cookiecutter.add_example_apps == 'True' %}
 AUTH_USER_MODEL = 'users.CustomUser'
 {% endif %}
