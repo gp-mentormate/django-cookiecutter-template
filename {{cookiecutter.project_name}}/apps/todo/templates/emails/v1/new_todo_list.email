@@ -1,0 +1,45 @@
+{% load i18n %}
+
+{% block subject %}New Todo List Created{% endblock %}
+
+{% block body %}
+Hello,
+To ensure compatibility across different email clients, it is recommended to send both
+plain text and HTML variants of an email. Not all email clients fully support HTML rendering,
+so providing a plain text version ensures that the email content is accessible and
+readable for all recipients. By including both versions, you can cater to the preferences
+and capabilities of different email clients, ensuring a consistent and effective
+communication experience.
+
+A new todo list has been created by a user on our site. Here are the details:
+
+User: [User's Name]
+Title: [Todo List Title]
+Description: [Todo List Description]
+
+Please take any necessary actions.
+
+Best regards!
+{% endblock %}
+
+{% block html %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>New Todo List Created</title>
+</head>
+<body>
+    <h1>New Todo List Created</h1>
+    <p>Hello,</p>
+    <p>A new todo list has been created by a user on our site. Here are the details:</p>
+    <ul>
+        <li><strong>User:</strong> [User's Name]</li>
+        <li><strong>Title:</strong> [Todo List Title]</li>
+        <li><strong>Description:</strong> [Todo List Description]</li>
+    </ul>
+    <p>Please take any necessary actions.</p>
+    <p>Best regards!</p>
+</body>
+</html>
+{% endblock %}

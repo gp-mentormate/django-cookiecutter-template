@@ -11,11 +11,6 @@ env = environ.Env(
 )
 env.read_env(os.path.join(BASE_DIR, '.env'))
 
-if env('ENV') == 'production':
-    from config.settings.production import *
-else:
-    from config.settings.local import *
-
 SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = int(env('DEBUG', default=0))
@@ -34,6 +29,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular_sidecar',
     'drf_spectacular',
+    'email_from_template',
     # Custom apps
     'apps.core',
     {%- if cookiecutter.add_example_api == 'True' %}
@@ -137,3 +133,7 @@ SPECTACULAR_SETTINGS = {
 {% if cookiecutter.add_example_api == 'True' %}
 AUTH_USER_MODEL = 'users.CustomUser'
 {% endif %}
+if env('ENV') == 'production':
+    from config.settings.production import *
+else:
+    from config.settings.local import *

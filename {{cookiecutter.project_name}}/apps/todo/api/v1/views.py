@@ -29,21 +29,3 @@ class TodoListModelViewSet(ModelViewSet):
 
     def get_queryset(self):
         return get_todo_lists(user=self.request.user)
-
-
-class EmailTemplateExampleAPIView(APIView):
-
-    def post(self, request: Request, *args: Any, **kwargs: Any) -> Response:
-        try:
-            send_mail(
-                recipient_list=ADMINS,
-                template="emails/v1/new_todo_list.email",
-                context={},
-                bcc=[],
-                cc=[]
-            )
-        except Exception as e:
-            logging.error(e)
-            return Response({"The email is not sent!"}, status=status.HTTP_400_BAD_REQUEST)
-
-        return Response({"The email is sent successfully!"}, status=status.HTTP_200_OK)
