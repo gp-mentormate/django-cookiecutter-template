@@ -1,3 +1,6 @@
+import logging
+import sys
+
 import environ
 import os
 from pathlib import Path
@@ -20,3 +23,6 @@ DATABASES = {
 
 DEFAULT_FROM_EMAIL = "webmaster@localhost"
 ADMINS = [("{{ cookiecutter.name }}", "{{ cookiecutter.email }}")]
+
+if len(sys.argv) > 1 and sys.argv[1] == 'test':
+    logging.disable(logging.CRITICAL)

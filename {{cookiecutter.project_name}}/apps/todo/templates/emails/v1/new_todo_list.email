@@ -1,5 +1,3 @@
-{% load i18n %}
-
 {% block subject %}New Todo List Created{% endblock %}
 
 {% block body %}
