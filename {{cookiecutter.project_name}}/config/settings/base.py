@@ -110,6 +110,17 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+DATABASES = {
+    'default': {
+        'ENGINE': env('DB_ENGINE'),
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
+    }
+}
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
@@ -129,7 +140,3 @@ SPECTACULAR_SETTINGS = {
 {% if cookiecutter.add_example_api == 'True' %}
 AUTH_USER_MODEL = 'users.CustomUser'
 {% endif %}
-if env('ENV') == 'production':
-    from config.settings.production import *
-else:
-    from config.settings.local import *

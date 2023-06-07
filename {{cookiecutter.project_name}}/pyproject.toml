@@ -18,6 +18,7 @@ license = { text = "" }
 requires-python = ">=3.11"
 
 [tool.ruff]
+line-length = 79
 select = [
   "E",   # pycodestyle
   "F",   # pyflakes

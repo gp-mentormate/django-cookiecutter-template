@@ -1,1 +1,1 @@
-ADMINS = []
+from config.settings.base import *

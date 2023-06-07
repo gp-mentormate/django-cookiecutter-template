@@ -12,7 +12,6 @@ from django.db.models import QuerySet
 from email_from_template import send_mail
 
 from apps.todo.api.v1.selectors import all_todo_lists, user_todo_lists
-from config.settings.local import ADMINS
 
 
 def get_todo_lists(*, user: Union[AbstractUser, AnonymousUser]) -> QuerySet:
@@ -74,7 +73,7 @@ def new_todo_list_email(*, recipients: list = None) -> bool:
             recipient_list=recipients,
             template="emails/v1/new_todo_list.email",
             context={},
-            bcc=ADMINS,
+            bcc=[],
             cc=[]
         )
     except Exception as e:
