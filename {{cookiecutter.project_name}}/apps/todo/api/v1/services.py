@@ -4,21 +4,22 @@
 # Create your services here.
 import logging
 
-from django.contrib.auth.models import AbstractUser, AnonymousUser
+from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import ValidationError
 from django.core.validators import EmailValidator
 from django.db.models import QuerySet
 from email_from_template import send_mail
 
 from apps.todo.api.v1.selectors import all_todo_lists, user_todo_lists
+from apps.users.models import CustomUser
 
 
-def get_todo_lists(*, user: AbstractUser | AnonymousUser) -> QuerySet:
+def get_todo_lists(*, user: CustomUser | AnonymousUser) -> QuerySet:
     """
     Retrieves the todo lists based on the user.
 
     Args:
-        user (AbstractUser | AnonymousUser): The user for whom to
+        user (CustomUser | AnonymousUser): The user for whom to
         retrieve the todo lists. It can be an instance of AbstractUser
         (authenticated user) or AnonymousUser (unauthenticated user).
 
@@ -33,10 +34,10 @@ def get_todo_lists(*, user: AbstractUser | AnonymousUser) -> QuerySet:
     elif user.is_authenticated:
         return user_todo_lists(user=user)
     else:
-        return QuerySet.none()
+        return CustomUser.objects.none()
 
 
-def new_todo_list_email(*, recipients: list = None) -> bool:
+def new_todo_list_email(*, recipients: list | None = None) -> bool:
     """
     Sends an email notification when a new todo list is created.
 

@@ -1,4 +1,4 @@
-# The `models.py` file defines the structure and behavior of
+# The `models.pyi` file defines the structure and behavior of
 # the application's database models, allowing developers to create and
 # manipulate database tables and their relationships.
 
@@ -7,12 +7,35 @@ import uuid
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django_softdelete.models import SoftDeleteModel
+from django_softdelete.models import (
+    DeletedQuerySet,
+    SoftDeleteModel,
+    SoftDeleteQuerySet,
+)
 
 user_model = settings.AUTH_USER_MODEL
 
 
+class SoftDeleteManager(models.Manager):
+    def get_queryset(self):
+        return SoftDeleteQuerySet(self.model, self._db).filter(
+            is_deleted=False)
+
+
+class DeletedManager(models.Manager):
+    def get_queryset(self):
+        return DeletedQuerySet(self.model, self._db).filter(is_deleted=True)
+
+
+class GlobalManager(models.Manager):
+    pass
+
+
 class CustomSoftDeleteModel(SoftDeleteModel):
+    objects: SoftDeleteManager = SoftDeleteManager()
+    deleted_objects: DeletedManager = DeletedManager()
+    global_objects: GlobalManager = GlobalManager()
+
     deleted_by: models.ForeignKey = models.ForeignKey(
         to=user_model,
         verbose_name=_('Deleted by'),

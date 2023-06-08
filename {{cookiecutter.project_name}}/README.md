@@ -71,6 +71,28 @@ For better understanding of the test coverage situation you can generate html re
 
 #### It's highly recommend striving for a test coverage of more than 80% in the project. 
 
+## Linting, types checking, static security analysis
+
+It's a good practice the linters, the type checkers and static analysis tools to be a part of the pre-commmit hook
+but you can run them from the terminal as well.
+
+```sh
+(env)$ ruff .
+```
+
+```sh
+(env)$ mypy .
+```
+
+```sh
+(env)$ bandit -r ./apps
+```
+
+```sh
+(env)$ pip-audit .
+```
+
+
 ## Documentation
 
 Swagger documentation is available: \

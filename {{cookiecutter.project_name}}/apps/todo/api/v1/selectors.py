@@ -7,15 +7,15 @@
 # the database interaction more efficient and reusable across different
 # parts of the application.
 
-from django.contrib.auth.models import AbstractUser
 from django.db.models import QuerySet
 
 from apps.todo.models import TodoList
+from apps.users.models import CustomUser
 
 
 def all_todo_lists() -> QuerySet:
     return TodoList.objects.all()
 
 
-def user_todo_lists(*, user: AbstractUser) -> QuerySet:
+def user_todo_lists(*, user: CustomUser) -> QuerySet:
     return TodoList.objects.filter(created_by=user)

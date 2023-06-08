@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from models import CustomUser
 
 
 def all_users():
@@ -20,4 +20,4 @@ def all_users():
         ```
     """
 
-    return User.objects.all()
+    return CustomUser.objects.all()
