@@ -54,12 +54,6 @@ steps:
    cd project-name
    ```
 
-7. Navigate to the newly created project directory:
-
-   ```shell
-   cd project-name
-   ```
-
    **Note:** Cookiecutter has automatically created a virtual environment for
    your project and installed the necessary dependencies. You don't need to
    create a separate virtual environment or install dependencies manually.
