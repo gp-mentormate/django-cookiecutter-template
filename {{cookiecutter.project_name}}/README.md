@@ -42,7 +42,7 @@ apply the migrations and run the development server:
 
 The project supports and containerization:
 ```sh
-(env)$ docker-compose up --build
+(env)$ docker compose up
 ```
 
 And navigate to `http://127.0.0.1:8000/`.
